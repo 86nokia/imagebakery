@@ -2,7 +2,7 @@
  Bake Images for Clouds using Ansible and Packer.
 
 Working tree: <br />
-/home/<user>/imagebakery/ <br />
+/home/your-user/imagebakery/ <br />
 ├── ansible <br />
 │   └── this-dir-contains-ansible-playbooks.txt <br />
 ├── images <br />
