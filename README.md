@@ -15,7 +15,6 @@ Working tree: <br />
 ├── kickstart <br />
 │   ├── rhel-server-7.6-x86_64-base.cfg <br />
 │   └── this-dir-contains-kickstart-files.txt <br />
-├── LICENSE <br />
 ├── output <br />
 │   ├── aws <br />
 │   ├── azure <br />
@@ -53,12 +52,13 @@ Working tree: <br />
 │   ├── launch-qcow2qcow.sh <br />
 │   ├── packer_cache <br />
 │   └── this-dir-contains-packer-json-files.txt <br />
-├── README.md <br />
 ├── scripts <br />
 │   └── this-dir-contains-shell-scripts.txt <br />
 ├── terraform <br />
 │   └── this-dir-contains-terraform-tf-config-files.txt <br />
 └── variables <br />
-    ├── digitalocean-vars-example.json <br />
-    ├── do-vars.json <br />
-    └── this-dir-contains-variable-json-file.txt <br />
+│   ├── digitalocean-vars-example.json <br />
+│   ├── do-vars.json <br />
+│   ├── this-dir-contains-variable-json-file.txt <br /> 
+├── README.md <br />
+├── LICENSE <br />
