@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "token": null
+  },
+  "builders":
+  [
+    { 
+      "type": "digitalocean",
+      "droplet_name": "rhel76",
+      "api_token": "{{user `token`}}",
+      "image": 45663592,
+      "region": "lon1",
+      "size": "s-1vcpu-1gb",
+      "snapshot_name": "rhel-7.6-packer-{{timestamp}}",
+      "private_networking": "false",
+      "ssh_username": "root",
+      "ssh_password": "Redhat.com1"
+     }
+   ],
+  "provisioners":
+    [
+      {
+        "type": "shell",
+        "pause_before": "5s",
+        "inline": [
+          "cd /root/",
+          "touch installationlog.txt",
+          "echo 'installtion is complete' >> installationlog.txt"
+          ]
+        }
+      ]
+
+}

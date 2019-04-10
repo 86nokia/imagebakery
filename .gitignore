@@ -1,0 +1,27 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# other files 
+*.iso
+*.qcow
+/variables/do-vars.json
+/images/rhel-server-7.6-x86_64-kvm.qcow2
+/images/rhel-server-7.6-x86_64-kvm_original.qcow2
+/packer/build.pwd
+/packer/build.pwi
+/packer/build.hwm 
+
+/packer/build.hwm
+/packer/build.pwd
+/packer/build.pwi
+
+# other directories 
+/output/*
+/images/*.qcow2

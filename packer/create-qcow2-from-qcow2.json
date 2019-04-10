@@ -1,0 +1,56 @@
+{
+  "builders":
+  [
+    {
+      "type": "qemu",
+      "qemu_binary": "qemu-kvm",
+      "accelerator": "kvm",
+      "headless": "true",
+      "qemuargs": [
+        [ "-m", "8192M" ],
+        [ "-smp", "cpus=1,maxcpus=16,cores=4" ]
+      ],
+      
+      "format": "qcow2",
+      "vm_name": "rhel-server-7.6-x86_64-base-updated-{{timestamp}}.qcow2",
+      
+      "disk_interface": "virtio",
+      "disk_size": 12000,
+      
+      "net_device": "virtio-net",
+ 
+      "iso_url": "../images/rhel-server-7.6-x86_64-kvm.qcow2",
+      "disk_image": "true",
+      "iso_checksum_type": "none",
+ 
+      "output_directory": "../output/qcow2/rhel-7.6_{{timestamp}}",
+ 
+      "http_directory": "../kickstarts",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+ 
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+ 
+      "ssh_username": "root",
+      "ssh_password": "Redhat.com1",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "1200s", 
+      "shutdown_command": "shutdown -P now"
+    }
+  ],
+ 
+  "provisioners":
+  [
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "inline": [
+        "cd /root/",
+        "touch installationlog.txt",
+        "echo 'installtion is complete' >> installationlog.txt"
+      ]
+    }
+  ]
+}
+
