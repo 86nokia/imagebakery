@@ -2,14 +2,14 @@
  Bake Images for Clouds using Ansible and Packer.
 
 Packages that needs to be present on imagebakery machine: 
-packer - for creating images
-ansible - for configuring images 
-terraform - for specifying infra on the cloud
-qemu-kvm + virtualization group - packer needs kvm for creating images
-git - cloning the repo with all the scripts
-doctl - interacting with Digitalocean 
-awscli - interacting with AWS
-gcloud - interacting with Google Cloud Platform
+packer - for creating images <br />
+ansible - for configuring images <br /> 
+terraform - for specifying infra on the cloud <br />
+qemu-kvm + virtualization group - packer needs kvm for creating images <br />
+git - cloning the repo with all the scripts <br />
+doctl - interacting with Digitalocean  <br />
+awscli - interacting with AWS <br />
+gcloud - interacting with Google Cloud Platform <br />
 
 
 Working tree: <br />
