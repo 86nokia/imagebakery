@@ -25,3 +25,4 @@
 # other directories 
 /output/*
 /images/*.qcow2
+/images/*.ova
