@@ -1,0 +1,70 @@
+{
+  "variables": {
+    "aws_access_key": null,
+    "aws_secret_key": null
+  },
+
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "vm_name": "rhel-server-7.6-x86_64-base-updated-{{timestamp}}",
+      "output_directory": "../output/ova/rhel-7.6_{{timestamp}}",
+      "guest_os_type": "RedHat_64",
+      "format": "ova",
+      "headless": true,
+      "disk_size": "10000",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "2048"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"],
+	["modifyvm", "{{.Name}}", "--vrde", "on"],
+	["modifyvm", "{{.Name}}", "--cableconnected1", "on"]
+        ],
+      "iso_url": "../iso/rhel-server-7.6-x86_64-dvd.iso",
+      "iso_checksum": "60a0be5aeed1f08f2bb7599a578c89ec134b4016cd62a8604b29f15d543a469c",
+      "iso_checksum_type": "sha256",
+      "http_directory": "../kickstart/",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+      "ssh_username": "root",
+      "ssh_password": "Redhat.com1",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "1200s",
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+      "boot_wait": "10s",
+      "boot_command": [
+        "<up><wait><tab><wait> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/rhel-server-7.6-x86_64-base-ova.cfg<enter><wait>"
+      ],
+      "shutdown_command": "shutdown -P now"
+    }
+  ],
+
+  "provisioners":
+  [
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "inline": [
+        "cd /root/",
+        "touch installationlog.txt",
+        "echo 'installtion is complete' >> installationlog.txt"
+      ]
+    }
+  ],
+
+ "post-processors":
+  [
+    {
+      "type": "amazon-import",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "eu-west-2",
+      "s3_bucket_name": "rhel-import",
+      "ami_name": "ami-rhel-server-7.6-x86_64-base-{{timestamp}}",
+      "license_type": "BYOL",
+      "tags": {"Description": "packer rhel-7.6 amazon-import {{timestamp}}"}
+    }
+  ]
+}

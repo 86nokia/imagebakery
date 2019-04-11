@@ -12,6 +12,7 @@
 *.iso
 *.qcow
 /variables/do-vars.json
+/variables/aws-vars.json
 /images/rhel-server-7.6-x86_64-kvm.qcow2
 /images/rhel-server-7.6-x86_64-kvm_original.qcow2
 /packer/build.pwd
